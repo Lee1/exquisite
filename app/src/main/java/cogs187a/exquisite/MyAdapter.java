@@ -65,6 +65,8 @@ public class MyAdapter extends BaseExpandableListAdapter {
         return false;
     }
 
+
+
     /**
      * Place the List Names into their corresponding positions in the ExpandableListView
      */
@@ -97,7 +99,7 @@ public class MyAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
-        // Get the name of the current List to be rendered
+        // Get the string of the current word to be rendered
         String word = (list_words_map.get(list_names.get(groupPosition))).get(childPosition);
 
         // If the word layout view has not already been created from the XML then do so now

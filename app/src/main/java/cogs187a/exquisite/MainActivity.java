@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.VectorEnabledTintResources;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,11 +26,14 @@ public class MainActivity extends AppCompatActivity {
     ExpandableListView expandableListView;
     public ImageButton plus;
     public ImageButton settings;
+    public SearchView search_bar;
+
 
     // Initialize the buttons
     public void init() {
         plus = (ImageButton)findViewById(R.id.plusButton);
         settings = (ImageButton)findViewById(R.id.settingsButton);
+        search_bar = (SearchView)findViewById(R.id.searchBar);
 
         // Links OnClickListeners to buttons
         plus.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent settingsIntent = new Intent(MainActivity.this,SettingsButtonActivity.class);
                 startActivity(settingsIntent);
+            }
+        });
+
+        // Make Entire Search Bar Clickable - Also patches persistent keyboard glitch
+        search_bar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search_bar.setIconified(false);
             }
         });
 
@@ -108,5 +119,6 @@ public class MainActivity extends AppCompatActivity {
         expandableListView.expandGroup(0);
 
     }
+
 
 }
