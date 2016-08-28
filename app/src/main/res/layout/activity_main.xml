@@ -50,7 +50,9 @@
             android:background="@drawable/round_edit_text"
             android:layout_centerHorizontal="true"
             android:queryHint="@string/default_search"
-            android:clickable="true" />
+            android:clickable="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp" />
 
         <ExpandableListView
             android:layout_width="match_parent"

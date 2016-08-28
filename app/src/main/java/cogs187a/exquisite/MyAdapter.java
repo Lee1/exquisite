@@ -31,17 +31,18 @@ public class MyAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getGroupCount() {
-        return 0;
+        return this.list_words_map.size();
     }
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return 0;
+        return this.list_words_map.get(this.list_names.get(groupPosition))
+                .size();
     }
 
     @Override
     public Object getGroup(int groupPosition) {
-        return null;
+        return this.list_names.get(groupPosition);
     }
 
     @Override
@@ -51,12 +52,12 @@ public class MyAdapter extends BaseExpandableListAdapter {
 
     @Override
     public long getGroupId(int groupPosition) {
-        return 0;
+        return groupPosition;
     }
 
     @Override
     public long getChildId(int groupPosition, int childPosition) {
-        return 0;
+        return childPosition;
     }
 
     @Override
@@ -115,6 +116,6 @@ public class MyAdapter extends BaseExpandableListAdapter {
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition) {
-        return false;
+        return true;
     }
 }

@@ -5,7 +5,7 @@
     <string-array name="list_names">
         <item>Recently Added</item>
         <item>Library</item>
-        <item>Custom</item>
+        <item>Biology</item>
     </string-array>
 
     <string-array name="recently">
@@ -15,14 +15,14 @@
     </string-array>
 
     <string-array name="library">
-        <item>aaa</item>
-        <item>bbb</item>
-        <item>ccc</item>
+        <item>Word1</item>
+        <item>Word2</item>
+        <item>Word3</item>
     </string-array>
 
     <string-array name="custom">
-        <item>aaa</item>
-        <item>bbb</item>
-        <item>ccc</item>
+        <item>WordA</item>
+        <item>WordB</item>
+        <item>WordC</item>
     </string-array>
 </resources>

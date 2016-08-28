@@ -69,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         MyAdapter myAdapter = new MyAdapter(this,Names,ChildList);
         expandableListView.setAdapter(myAdapter);
 
+        // Expand Recently Viewed By Default
+        expandableListView.expandGroup(0);
+
     }
 
 }
