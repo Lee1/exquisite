@@ -2,22 +2,54 @@ package cogs187a.exquisite;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.VectorEnabledTintResources;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    // Variables
     ExpandableListView expandableListView;
+    public ImageButton plus;
+    public ImageButton settings;
+
+    // Initialize the buttons
+    public void init() {
+        plus = (ImageButton)findViewById(R.id.plusButton);
+        settings = (ImageButton)findViewById(R.id.settingsButton);
+
+        // Links OnClickListeners to buttons
+        plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent plusIntent = new Intent(MainActivity.this,PlusButtonActivity.class);
+                startActivity(plusIntent);
+            }
+        });
+
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent settingsIntent = new Intent(MainActivity.this,SettingsButtonActivity.class);
+                startActivity(settingsIntent);
+            }
+        });
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +57,9 @@ public class MainActivity extends AppCompatActivity {
         // Start at activity_main
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Initialization
+        init();
 
         /**
          * Overview:
