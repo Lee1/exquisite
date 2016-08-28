@@ -34,14 +34,29 @@
         android:layout_alignBottom="@+id/settingsButton"
         android:layout_centerHorizontal="true" />
 
-    <SearchView
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="45dip"
-        android:id="@+id/searchBar"
+        android:layout_height="match_parent"
         android:layout_below="@+id/logoButton"
-        android:background="@drawable/round_edit_text"
-        android:layout_centerHorizontal="true"
-        android:queryHint="@string/default_search" />
+        android:layout_alignParentStart="true">
+
+        <SearchView
+            android:layout_width="match_parent"
+            android:layout_height="45dip"
+            android:id="@+id/searchBar"
+            android:layout_below="@+id/logoButton"
+            android:background="@drawable/round_edit_text"
+            android:layout_centerHorizontal="true"
+            android:queryHint="@string/default_search"
+            android:clickable="true" />
+
+        <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/expandableListView" />
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -1,4 +1,28 @@
 <resources>
     <string name="app_name">exquisite</string>
     <string name="default_search">Search</string>
+
+    <string-array name="list_names">
+        <item>Recently Added</item>
+        <item>Library</item>
+        <item>Custom</item>
+    </string-array>
+
+    <string-array name="recently">
+        <item>recently added word 1</item>
+        <item>recently added word 2</item>
+        <item>recently added word 3</item>
+    </string-array>
+
+    <string-array name="library">
+        <item>aaa</item>
+        <item>bbb</item>
+        <item>ccc</item>
+    </string-array>
+
+    <string-array name="custom">
+        <item>aaa</item>
+        <item>bbb</item>
+        <item>ccc</item>
+    </string-array>
 </resources>
