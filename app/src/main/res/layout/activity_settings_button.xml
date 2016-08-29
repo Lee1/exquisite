@@ -70,15 +70,76 @@
             android:textStyle="bold"
             android:typeface="sans"
             android:textSize="30dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Notifications"
-            android:id="@+id/Notification_Option_Text"
-            android:layout_marginTop="35dp" />
+            android:layout_marginBottom="60dp">
+
+            <Switch
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notifications"
+                android:id="@+id/switch1"
+                android:layout_weight="1"
+                android:checked="false"
+                android:enabled="true"
+                android:gravity="top"
+                android:elegantTextHeight="false"
+                android:switchPadding="200dp"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:switchMinWidth="50dp"
+                android:thumbTextPadding="25dp"
+
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="60dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Help"
+                android:id="@+id/button"
+                android:textSize="20dp"
+                android:background="#ecebeb" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="50dp">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="About"
+                android:id="@+id/button2"
+                android:textSize="20dp"
+                android:background="#ecebeb" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:src="@drawable/dropbox_button"
+                android:layout_gravity="center_horizontal"
+                android:background="@null" />
+        </FrameLayout>
 
     </LinearLayout>
 
