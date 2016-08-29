@@ -3,8 +3,10 @@ package cogs187a.exquisite;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 public class SettingsButtonActivity extends AppCompatActivity {
 
@@ -18,9 +20,21 @@ public class SettingsButtonActivity extends AppCompatActivity {
         // Links OnClickListeners to buttons
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent plusIntent = new Intent(SettingsButtonActivity.this,PlusButtonActivity.class);
-                startActivity(plusIntent);
+            public void onClick(View v) {
+                PopupMenu popup = new PopupMenu(SettingsButtonActivity.this, plus);
+                popup.getMenuInflater().inflate(R.menu.plus_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if(R.id.one == item.getItemId()) {
+
+                        } else {
+
+                        }
+                        return true;
+                    }
+                });
+
+                popup.show();
             }
         });
 

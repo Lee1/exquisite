@@ -6,14 +6,20 @@
     android:orientation="vertical"
     android:padding="8dp">
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:id="@+id/list_name_text"
-    android:paddingBottom="10dp"
-    android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-    android:paddingTop="10dp"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:textStyle="bold"
-    android:textColor="#000000" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:id="@+id/list_name_text"
+        android:paddingBottom="10dp"
+        android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
+        android:paddingTop="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textStyle="bold"
+        android:textColor="#000000" />
+    </LinearLayout>
 
 </LinearLayout>
