@@ -5,46 +5,58 @@
     android:layout_height="match_parent"
     android:background="#ebebeb">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/plusButton"
-        android:background="@null"
-        android:src="@drawable/plus_icon"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:padding="5dp"
-        android:clickable="true"
-        android:onClick="plusButtonOnClick" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/settingsButton"
-        android:background="@null"
-        android:src="@drawable/settings_icon"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:padding="5dp"
-        android:clickable="true"
-        android:onClick="settingsButtonOnClick" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/logoButton"
-        android:background="@null"
-        android:src="@drawable/logo"
-        android:padding="5dp"
-        android:layout_alignBottom="@+id/settingsButton"
-        android:layout_centerHorizontal="true" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/logoButton"
         android:layout_alignParentStart="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#bdbdbd">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/plusButton"
+                    android:background="@null"
+                    android:src="@drawable/plus_icon"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:padding="5dp"
+                    android:clickable="true"
+                    android:onClick="plusButtonOnClick"
+                    android:layout_gravity="left" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/logoButton"
+                    android:background="@null"
+                    android:src="@drawable/logo"
+                    android:padding="5dp"
+                    android:layout_alignBottom="@+id/settingsButton"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/settingsButton"
+                    android:background="@null"
+                    android:src="@drawable/settings_icon"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:padding="5dp"
+                    android:clickable="true"
+                    android:onClick="settingsButtonOnClick" />
+            </RelativeLayout>
+        </FrameLayout>
 
         <SearchView
             android:layout_width="match_parent"
