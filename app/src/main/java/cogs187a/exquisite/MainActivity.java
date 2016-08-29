@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ExpandableListView expandableListView;
     public ImageButton plus;
     public ImageButton settings;
+    private LinkedHashMap<String,List<String>> hm = new LinkedHashMap<>();
 
     // Initialize the buttons
     public void init() {
@@ -50,27 +53,32 @@ public class MainActivity extends AppCompatActivity {
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     public boolean onMenuItemClick(MenuItem item) {
                         if(R.id.one == item.getItemId()) {
+                            LayoutInflater li = LayoutInflater.from(MainActivity.this);
+                            View view = li.inflate(R.layout.list_entry, null);
                             AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
 
+                            alert.setView(view);
+
                             // Set an EditText view to get user input
-                            final EditText input = new EditText(MainActivity.this);
+                            final EditText input = (EditText)view.findViewById(R.id.editTextList);
                             input.setHint("List Name");
-                            alert.setView(input);
 
                             alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
-
-                                    // Do something with value!
+                                    hm.put(input.getText().toString(), new ArrayList<String>());
+                                    addToList();
                                 }
                             });
 
                             alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int whichButton) {
-                                    // Canceled.
+                                    dialog.cancel();
                                 }
                             });
+
                             alert.show();
-                        } else {
+                        }
+                        else if(R.id.two == item.getItemId()) {
                             LayoutInflater factory = LayoutInflater.from(MainActivity.this);
 
                             //text_entry is an Layout XML file containing two text field to display in alert dialog
@@ -81,20 +89,19 @@ public class MainActivity extends AppCompatActivity {
                             input2.setHint("Definition");
 
                             AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                            alert.setView(textEntryView).setPositiveButton("Ok",
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int whichButton) {
-                                            Log.i("AlertDialog","TextEntry 1 Entered "+input1.getText().toString());
-                                            Log.i("AlertDialog","TextEntry 2 Entered "+input2.getText().toString());
-                                            /* User clicked OK so do some stuff */
-                                        }
-                                    }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int whichButton) {
-                                         /*
-                                        * User clicked cancel so do some stuff
-                                        */
-                                        }
-                                    });
+                            alert.setView(textEntryView).setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    //Log.i("AlertDialog","TextEntry 1 Entered "+input1.getText().toString());
+                                    //Log.i("AlertDialog","TextEntry 2 Entered "+input2.getText().toString());
+                                    /* User clicked OK so do some stuff */
+                                }
+                            }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int whichButton) {
+                                    /*
+                                    * User clicked cancel so do some stuff
+                                    */
+                                }
+                            });
                             alert.show();
                         }
                         return true;
@@ -129,7 +136,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Initialization
         init();
+        addToList();
+    }
 
+    private void addToList() {
         /**
          * Overview:
          * 1. Convert XML formatted lists to real lists
@@ -139,13 +149,13 @@ public class MainActivity extends AppCompatActivity {
 
         /* 1 ------------------------------------------------------------------------------------ */
         // Create List Object for each Vocab List
-        List<String> Names = new ArrayList<String>(); // Names of each list
-        List<String> Recently = new ArrayList<String>();   // Words in Recently added
-        List<String> Library = new ArrayList<String>();    // Words in the Library List
-        List<String> Custom = new ArrayList<String>();     // Custom created words
+        List<String> Names = new ArrayList<>(); // Names of each list
+        List<String> Recently = new ArrayList<>();   // Words in Recently added
+        List<String> Library = new ArrayList<>();    // Words in the Library List
+        List<String> Custom = new ArrayList<>();     // Custom created words
 
         // Create a map from the Vocab List name to the corresponding list object
-        HashMap<String,List<String>> ChildList = new HashMap<String, List<String>>();
+        HashMap<String,List<String>> ChildList = new HashMap<>();
 
         // Convert XML string array to real string array
         String list_names[] = getResources().getStringArray(R.array.list_names);
@@ -161,21 +171,22 @@ public class MainActivity extends AppCompatActivity {
 
         /* 2 ------------------------------------------------------------------------------------ */
         // Map the list name to the corresponding word list
-        ChildList.put(Names.get(0),Recently);
-        ChildList.put(Names.get(1),Library);
-        ChildList.put(Names.get(2),Custom);
+        ChildList.put(Names.get(0), Recently);
+        ChildList.put(Names.get(1), Library);
+        ChildList.put(Names.get(2), Custom);
+        String[] keys = hm.keySet().toArray(new String[hm.size()]);
+        for (String key: keys) Log.i("key", key); //ChildList.put(key,hm.get(key));
 
         /* 3 ------------------------------------------------------------------------------------ */
         // Retrieve the ExpandableListView
         expandableListView = (ExpandableListView)findViewById(R.id.expandableListView);
 
         // Create an adapter to place the List names and Corresponding sets of values into the view
-        MyAdapter myAdapter = new MyAdapter(this,Names,ChildList);
+        MyAdapter myAdapter = new MyAdapter(MainActivity.this,Names,ChildList);
         expandableListView.setAdapter(myAdapter);
 
         // Expand Recently Viewed By Default
         expandableListView.expandGroup(0);
-
     }
 
 }

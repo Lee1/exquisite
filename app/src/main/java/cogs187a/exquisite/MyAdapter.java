@@ -17,11 +17,9 @@ import java.util.List;
  */
 public class MyAdapter extends BaseExpandableListAdapter {
 
-
     private Context context;
     private HashMap<String, List<String>> list_words_map;
     private List<String> list_names;
-
 
     public MyAdapter(Context context, List<String> names, HashMap<String, List<String>> childList) {
         this.context = context;
@@ -36,8 +34,7 @@ public class MyAdapter extends BaseExpandableListAdapter {
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        return this.list_words_map.get(this.list_names.get(groupPosition))
-                .size();
+        return this.list_words_map.get(this.list_names.get(groupPosition)).size();
     }
 
     @Override
