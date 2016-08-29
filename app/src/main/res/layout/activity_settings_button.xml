@@ -72,13 +72,16 @@
             android:textSize="30dp"
             android:layout_marginTop="10dp" />
 
-        <TextView
+        <Switch
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Notifications"
-            android:id="@+id/Notification_Option_Text"
-            android:layout_marginTop="35dp" />
+            android:id="@+id/switch1"
+            android:layout_weight="1"
+            android:layout_marginRight="30dp"
+            android:checked="false"
+            android:enabled="true"
+            android:gravity="top" />
 
     </LinearLayout>
 
